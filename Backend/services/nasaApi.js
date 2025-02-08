@@ -13,6 +13,14 @@ class NasaApiService {
     const response = await nasaClient.get('/planetary/apod');
     return response.data;
   }
+
+  async getMarsRoverPhotos(params) {
+    console.log(params)
+    const response = await nasaClient.get('/mars-photos/api/v1/rovers/curiosity/photos', {
+      params
+    });
+    return response.data;
+  }
 }
 
 module.exports = new NasaApiService();
