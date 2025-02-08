@@ -21,6 +21,15 @@ class NasaApiService {
     });
     return response.data;
   }
+
+  async getNearEarthObjects(params) {
+    const response = await nasaClient.get('/neo/rest/v1/feed',{
+      params
+    });
+
+    console.log(response)
+    return response.data;
+  }
 }
 
 module.exports = new NasaApiService();
