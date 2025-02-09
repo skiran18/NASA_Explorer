@@ -1,0 +1,163 @@
+/* General Container */
+.mars-container {
+    max-width: 90%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+/* Camera Filter Dropdown */
+.filter-section {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: white;
+}
+
+.filter-section select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+/* Grid Layout */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Photo Card */
+.photo-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease-in-out;
+}
+
+.photo-card:hover {
+    transform: scale(1.05);
+}
+
+/* Image Styling */
+.photo-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 3px solid #ffcc00;
+}
+
+/* Photo Info */
+.photo-info {
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Loading Spinner */
+.loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    border-top: 5px solid #ffcc00;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* No Results Message */
+.no-results {
+    font-size: 16px;
+    color: white;
+    margin-top: 20px;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Blurred background effect */
+}
+
+/* Modal Content */
+.modal-content {
+    position: relative;
+    background: rgba(255, 255, 255, 0.15); /* Glass effect */
+    padding: 15px;
+    border-radius: 12px;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Ensuring the Image Fits */
+.modal-image {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 80vh;  /* Ensures it doesn't exceed viewport height */
+    object-fit: contain; /* Prevents cropping */
+    border-radius: 8px;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* Close Button */
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 32px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover {
+    color: red;
+}
+
+/* Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
