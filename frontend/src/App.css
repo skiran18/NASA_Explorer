@@ -5,26 +5,3 @@ body {
   background-color: #0a0a2a;
   color: white;
 }
-
-
-nav ul {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  background-color: #1a1a3d;
-  padding: 1rem;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-}
-
-footer {
-  text-align: center;
-  padding: 1rem;
-  background-color: #1a1a3d;
-  position: fixed;
-  width: 100%;
-  bottom: 0;
-}
