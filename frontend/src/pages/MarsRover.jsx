@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { fetchData } from "../services/Api";
 import "./MarsRover.css";
 
-const MarsRoverSection = () => {
+const MarsRover = () => {
   const [photos, setPhotos] = useState([]);
   const [loading, setLoading] = useState(true);
   const [selectedCamera, setSelectedCamera] = useState("ALL");
@@ -58,7 +58,6 @@ const MarsRoverSection = () => {
         </select>
       </div>
 
-      {/* Loading Spinner */}
       {loading ? (
         <div className="loading-container">
           <div className="spinner"></div>
@@ -95,4 +94,4 @@ const MarsRoverSection = () => {
   );
 };
 
-export default MarsRoverSection;
+export default MarsRover;
