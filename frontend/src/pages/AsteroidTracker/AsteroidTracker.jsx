@@ -8,7 +8,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { AlertTriangle } from "lucide-react";
-import { fetchData } from "../services/Api";
+import { fetchData } from "../../services/Api";
 import "./AsteroidTracker.css";
 
 const AsteroidTracker = () => {

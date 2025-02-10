@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { fetchData } from "../services/Api";
+import { fetchData } from "../../services/Api";
 import "./HomePage.css";
 
 const HomePage = () => {

@@ -1,9 +1,9 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import HomePage from "./pages/HomePage";
-import MarsRover from "./pages/MarsRover";
-import AsteroidTracker from "./pages/AsteroidTracker";
+import Layout from "./components/Layout/Layout";
+import HomePage from "./pages/HomePage/HomePage";
+import MarsRover from "./pages/MarsRover/MarsRover";
+import AsteroidTracker from "./pages/AsteroidTracker/AsteroidTracker";
 
 function App() {
   return (

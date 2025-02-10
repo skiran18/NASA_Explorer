@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { fetchData } from "../services/Api";
+import { fetchData } from "../../services/Api";
 import "./MarsRover.css";
 
 const MarsRover = () => {
