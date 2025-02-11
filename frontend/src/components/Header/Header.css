@@ -53,6 +53,7 @@
 .nav-buttons {
   display: flex;
   gap: 15px;
+  margin-right: 50px;
 }
 
 .nav-button {
