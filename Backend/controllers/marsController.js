@@ -4,7 +4,6 @@ class MarsController {
   async getMarsPictures(req, res, next) {
     try {
       const response = await nasaApi.getMarsRoverPhotos({ sol: "100" });
-      console.log(response);
       res.json(response);
     } catch (error) {
       next(error);
@@ -18,7 +17,6 @@ class MarsController {
         "sol": "100",
         "camera" : camera_filter || "all",
       });
-    //   console.log(response);
       res.json(response);
     } catch (error) {
       next(error);

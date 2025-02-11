@@ -15,7 +15,6 @@ class NasaApiService {
   }
 
   async getMarsRoverPhotos(params) {
-    console.log(params)
     const response = await nasaClient.get('/mars-photos/api/v1/rovers/curiosity/photos', {
       params
     });
@@ -27,7 +26,6 @@ class NasaApiService {
       params
     });
 
-    console.log(response)
     return response.data;
   }
 }

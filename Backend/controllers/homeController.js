@@ -4,7 +4,6 @@ class HomeController {
   async getAPOD(req, res, next) {
     try {
       const response = await nasaApi.getAPOD();
-      console.log(response)
       res.json(response);
     } catch (error) {
       next(error);
