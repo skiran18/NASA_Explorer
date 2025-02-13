@@ -1,5 +1,6 @@
 const axios = require('axios');
 const config = require('../config');
+const logger = require('../utils/logger')
 
 const nasaClient = axios.create({
   baseURL: config.nasa.baseUrl,
@@ -11,6 +12,7 @@ const nasaClient = axios.create({
 class NasaApiService {
   async getAPOD() {
     const response = await nasaClient.get('/planetary/apod');
+    // logger.info(response.data);
     return response.data;
   }
 
@@ -18,6 +20,7 @@ class NasaApiService {
     const response = await nasaClient.get('/mars-photos/api/v1/rovers/curiosity/photos', {
       params
     });
+    // logger.info(response.data);
     return response.data;
   }
 
@@ -25,7 +28,7 @@ class NasaApiService {
     const response = await nasaClient.get('/neo/rest/v1/feed',{
       params
     });
-
+    // logger.info(response.data);
     return response.data;
   }
 }
