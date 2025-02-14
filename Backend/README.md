@@ -26,7 +26,7 @@ This is a Node.js and Express application that provides NASA-related data throug
 
   To get start with application, shown below:
 ```bash
-git clone --single-branch --branch version1 https://github.com/skiran18/NASA_Explorer.git
+git clone https://github.com/skiran18/NASA_Explorer.git
 ```
 
 ```bash
@@ -37,6 +37,12 @@ cd Backend
 
 ```bash
 npm install
+```
+
+  Environment variable: create a file named ".env" and add below variable with your own API key
+
+```bash
+NASA_API_KEY="<your-nasa-api-key>"
 ```
 
   Start the server:

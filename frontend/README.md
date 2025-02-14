@@ -21,7 +21,7 @@ This is a react application that provides NASA-related data through various API 
 
   To get start with application, shown below:
 ```bash
-git clone --single-branch --branch version1 https://github.com/skiran18/NASA_Explorer.git
+git clone https://github.com/skiran18/NASA_Explorer.git
 ```
 
 ```bash
@@ -35,3 +35,10 @@ npm install
 ```bash
 npm run start
 ```
+
+
+## Environment variable:
+
+Create a file ".env" and add following variable,
+
+```REACT_APP_API_BASE_URL="<backend-service-base-URL>/api"```
