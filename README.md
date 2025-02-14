@@ -1,1 +1,1 @@
-npm i# NASA_Explorer
+Do check README.md files in the Backend and frontend folders to start with applications.
