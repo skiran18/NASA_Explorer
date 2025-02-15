@@ -10,6 +10,8 @@ import {
 import { AlertTriangle } from "lucide-react";
 import { fetchData } from "../../services/Api";
 import "./AsteroidTracker.css";
+// import * as Lucide from "lucide-react";
+// const { AlertTriangle } = Lucide;
 
 const AsteroidTracker = () => {
   const [neoData, setNeoData] = useState();
