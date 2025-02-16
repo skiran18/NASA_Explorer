@@ -47,10 +47,8 @@
     "babel-jest": "^29.7.0",
     "esm": "^3.2.25",
     "identity-obj-proxy": "^3.0.0",
-    "jest": "^27.5.1",
-    "util": "^0.12.5"
+    "jest": "^27.5.1"
   },
-  "type": "module",
   "jest": {
     "transform": {
       "^.+\\.jsx?$": "babel-jest"
