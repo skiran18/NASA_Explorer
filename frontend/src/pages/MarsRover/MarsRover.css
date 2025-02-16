@@ -1,15 +1,233 @@
 /* General Container */
-.mars-container {
+.mars-travel-container {
     max-width: 90%;
     margin: 50px auto;
     text-align: center;
+    position: relative;
 }
 
-/* Camera Filter Dropdown */
+/* Blurred Background when Dialog is Open */
+.blurred::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 0;
+}
+
+/* Dialog Box */
+.dialog-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+    z-index: 1001; /* Higher than blur */
+    backdrop-filter: none; /* Prevents extra blur */
+}
+
+.dialog-box h2 {
+    color: #ffcc00;
+    margin-bottom: 10px;
+}
+
+.dialog-box input {
+    display: block;
+    width: 80%;
+    padding: 10px;
+    margin: 10px auto;
+    border-radius: 6px;
+    border: 1px solid #fff;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.dialog-box button {
+    background: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.dialog-box button:hover {
+    background: #e6b800;
+}
+
+/* Loading Animation */
+.loading-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.rocket {
+    width: 100px;
+    height: 400px;
+    background: url('../../assets/rocketLaunch.svg') no-repeat center;
+    background-size: contain;
+    animation: launch 1s ease-in-out infinite alternate;
+}
+
+@keyframes launch {
+    from {
+        transform: translateY(20px);
+    }
+    to {
+        transform: translateY(-50px);
+    }
+}
+
+.loading-animation p {
+    color: #ffcc00;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.content-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px;
+}
+
+/* Center the boarding pass */
+.boarding-pass-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35vh; /* Full viewport height */
+    position: relative;
+}
+
+/* Boarding Pass Styling */
+.boarding-pass {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 900px;
+    text-align: left;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-left: 5px solid #ffcc00;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+.boarding-pass-header {
+    font-size: 20px;
+    font-weight: bold;
+    background: #ffcc00;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px 5px 0 0;
+}
+
+.boarding-pass-body {
+    padding: 15px;
+}
+
+/* Passenger Details - Two Column Layout */
+.passenger-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 10px;
+    font-size: 14px;
+}
+
+/* Individual Detail Styling */
+.passenger-details p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+/* Barcode Styling */
+.barcode {
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(90deg, black 50%, white 50%);
+    background-size: 10px 100%;
+    margin-top: 15px;
+}
+
+.mars-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 40px 20px 10px 20px;
+}
+
+/* Mars Gallery Title */
+.mars-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+/* Filter Section */
 .filter-section {
-    margin-bottom: 20px;
     font-size: 16px;
     color: white;
+}
+
+.filter-section select {
+    padding: 8px 12px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+/* Mars Photos */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    justify-content: center;
+}
+
+.photo-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Filter Section */
+.filter-section {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+    width: 250px;
+    text-align: center;
 }
 
 .filter-section select {
@@ -57,57 +275,25 @@
     text-align: left;
 }
 
-/* Loading Spinner */
-.loading-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 400px;
-}
-
-.spinner {
-    width: 50px;
-    height: 50px;
-    border: 5px solid rgba(255, 255, 255, 0.3);
-    border-top: 5px solid #ffcc00;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-/* No Results Message */
-.no-results {
-    font-size: 16px;
-    color: white;
-    margin-top: 20px;
-}
-
+/* Modal */
 .modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6); /* Dark transparent overlay */
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    backdrop-filter: blur(10px); /* Blurred background effect */
+    backdrop-filter: blur(10px);
 }
 
 /* Modal Content */
 .modal-content {
     position: relative;
-    background: rgba(255, 255, 255, 0.15); /* Glass effect */
+    background: rgba(255, 255, 255, 0.15);
     padding: 15px;
     border-radius: 12px;
     max-width: 90%;
@@ -125,8 +311,8 @@
     width: auto;
     height: auto;
     max-width: 100%;
-    max-height: 80vh;  /* Ensures it doesn't exceed viewport height */
-    object-fit: contain; /* Prevents cropping */
+    max-height: 80vh;
+    object-fit: contain;
     border-radius: 8px;
     transition: transform 0.2s ease-in-out;
 }
@@ -150,7 +336,7 @@
     color: red;
 }
 
-/* Animation */
+/* Animations */
 @keyframes fadeIn {
     from {
         opacity: 0;
