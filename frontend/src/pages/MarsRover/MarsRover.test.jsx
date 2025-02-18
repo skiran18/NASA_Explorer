@@ -1,63 +1,103 @@
 import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import MarsRover from "./MarsRover";
 import { fetchData } from "../../services/Api";
-import "@testing-library/jest-dom";
-import { TextEncoder, TextDecoder } from "util";
 
-global.TextEncoder = TextEncoder;
-global.TextDecoder = TextDecoder;
-
-// Mock fetchData to return test data
+// Mock the API module
 jest.mock("../../services/Api", () => ({
   fetchData: jest.fn(),
 }));
 
-beforeAll(() => {
-  global.ResizeObserver = class {
-    observe() {}
-    unobserve() {}
-    disconnect() {}
-  };
-});
-
-const mockData = {
-  photos: [
-    {
-      id: "123",
-      img_src: "test.jpg",
-      camera: { full_name: "Front Hazard Avoidance Camera" },
-      earth_date: "2025-02-15",
-      rover: { name: "Curiosity" },
-    },
-  ],
-};
-
 describe("MarsRover Component", () => {
   beforeEach(() => {
-    fetchData.mockResolvedValue(mockData); // Mock API success response
+    fetchData.mockClear();
+    fetchData.mockResolvedValue({ photos: [] });
   });
 
-  test("MarsRover Component matches snapshot", async () => {
-    const { container } = render(<MarsRover />);
-    await waitFor(() => expect(screen.getByText("Select Camera:")).toBeInTheDocument());
-    expect(container.firstChild).toMatchSnapshot();
-  });
-
-  test("renders the component with correct heading", async () => {
+  test("renders the form initially", () => {
     render(<MarsRover />);
-    const headingElement = await screen.findByText("Select Camera:");
-    expect(headingElement).toBeInTheDocument();
+    expect(screen.getByText("Get Your Mars Boarding Pass")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Enter Your Name")).toBeInTheDocument();
+    expect(screen.getByPlaceholderText("Enter Your Location")).toBeInTheDocument();
+    expect(screen.getByText("Launch 🚀")).toBeInTheDocument();
   });
 
-  test("displays Mars Rover photos correctly", async () => {
+  test("submits the form and displays loading state", async () => {
     render(<MarsRover />);
-    await waitFor(() => expect(screen.getByAltText("Mars Rover 123")).toBeInTheDocument());
+
+    fireEvent.change(screen.getByPlaceholderText("Enter Your Name"), { target: { value: "John Doe" } });
+    fireEvent.change(screen.getByPlaceholderText("Enter Your Location"), { target: { value: "New York" } });
+
+    fireEvent.click(screen.getByText("Launch 🚀"));
+
+    expect(screen.getByText("Launching to Mars...")).toBeInTheDocument();
   });
 
-  test("renders no photos message when API returns empty array", async () => {
-    fetchData.mockResolvedValue({ photos: [] }); // Mock empty response
+  test("fetches and displays Mars photos after submission", async () => {
+    const mockPhotos = [
+      {
+        id: 1,
+        img_src: "https://example.com/mars1.jpg",
+        camera: { full_name: "Front Hazard Avoidance Camera" },
+        earth_date: "2025-06-10",
+        rover: { name: "Curiosity" },
+      },
+    ];
+
+    fetchData.mockResolvedValueOnce({ photos: mockPhotos });
+
     render(<MarsRover />);
-    await waitFor(() => expect(screen.getByText("No photos available for this camera.")).toBeInTheDocument());
+
+    fireEvent.change(screen.getByPlaceholderText("Enter Your Name"), { target: { value: "John Doe" } });
+    fireEvent.change(screen.getByPlaceholderText("Enter Your Location"), { target: { value: "New York" } });
+    fireEvent.click(screen.getByText("Launch 🚀"));
+
+    await waitFor(() => expect(fetchData).toHaveBeenCalledWith("mars"));
+
+    await waitFor(() => expect(screen.getByText("📸 Mars Gallery")).toBeInTheDocument());
+    expect(screen.getByText("Front Hazard Avoidance Camera")).toBeInTheDocument();
+    expect(screen.getByText("2025-06-10")).toBeInTheDocument();
+    expect(screen.getByText("Curiosity")).toBeInTheDocument();
+  });
+
+  test("handles camera filter selection", async () => {
+    render(<MarsRover />);
+
+    fireEvent.change(screen.getByPlaceholderText("Enter Your Name"), { target: { value: "John Doe" } });
+    fireEvent.change(screen.getByPlaceholderText("Enter Your Location"), { target: { value: "New York" } });
+    fireEvent.click(screen.getByText("Launch 🚀"));
+
+    await waitFor(() => expect(screen.getByLabelText("Select Camera:")).toBeInTheDocument());
+
+    fireEvent.change(screen.getByLabelText("Select Camera:"), { target: { value: "NAVCAM" } });
+    expect(fetchData).toHaveBeenCalledWith("mars/NAVCAM");
+  });
+
+  test("opens and closes modal when clicking on an image", async () => {
+    const mockPhotos = [
+      {
+        id: 1,
+        img_src: "https://example.com/mars1.jpg",
+        camera: { full_name: "Front Hazard Avoidance Camera" },
+        earth_date: "2025-06-10",
+        rover: { name: "Curiosity" },
+      },
+    ];
+
+    fetchData.mockResolvedValueOnce({ photos: mockPhotos });
+
+    render(<MarsRover />);
+
+    fireEvent.change(screen.getByPlaceholderText("Enter Your Name"), { target: { value: "John Doe" } });
+    fireEvent.change(screen.getByPlaceholderText("Enter Your Location"), { target: { value: "New York" } });
+    fireEvent.click(screen.getByText("Launch 🚀"));
+
+    await waitFor(() => expect(screen.getByText("📸 Mars Gallery")).toBeInTheDocument());
+
+    fireEvent.click(screen.getByAltText("Mars Rover 1"));
+    expect(screen.getByAltText("Mars Rover")).toBeInTheDocument();
+
+    fireEvent.click(screen.getByText("×"));
+    expect(screen.queryByAltText("Mars Rover")).not.toBeInTheDocument();
   });
 });

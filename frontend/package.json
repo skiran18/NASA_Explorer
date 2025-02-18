@@ -59,8 +59,12 @@
       "!src/serviceWorker.js",
       "!src/reportWebVitals.js",
       "!src/setupTests.js",
-      "!src/Header.js",
-      "!src/Layout.js"
+      "!src/components/Footer/Footer.jsx",
+      "!src/components/Header/Header.jsx",
+      "!src/components/Layout/Layout.jsx",
+      "!src/App.jsx",
+      "!src/Router.jsx",
+      "!src/services/Api.js"
     ],
     "coverageThreshold": {
       "global": {

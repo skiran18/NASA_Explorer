@@ -106,3 +106,178 @@ exports[`MarsRover Component MarsRover Component matches snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`MarsRover Component matches snapshot 1`] = `
+<div
+  class="mars-travel-container "
+>
+  <div>
+    <div
+      class="boarding-pass-container"
+    >
+      <div
+        class="boarding-pass"
+      >
+        <div
+          class="boarding-pass-header"
+        >
+          🚀 MARS BOARDING PASS
+        </div>
+        <div
+          class="boarding-pass-body"
+        >
+          <div
+            class="passenger-details"
+          >
+            <p>
+              <strong>
+                Passenger:
+              </strong>
+               
+              John Doe
+            </p>
+            <p>
+              <strong>
+                Departure:
+              </strong>
+               2025
+            </p>
+            <p>
+              <strong>
+                From:
+              </strong>
+               
+              Earth
+            </p>
+            <p>
+              <strong>
+                Destination:
+              </strong>
+               Mars
+            </p>
+          </div>
+          <div
+            class="barcode"
+          />
+          <p>
+            Explore mars using different cameras
+          </p>
+        </div>
+      </div>
+    </div>
+    <div
+      class="mars-header"
+    >
+      <h2
+        class="mars-title"
+      >
+        📸 Mars Gallery
+      </h2>
+      <div
+        class="filter-section"
+      >
+        <label
+          for="camera-filter"
+        >
+          Select Camera: 
+        </label>
+        <select
+          id="camera-filter"
+        >
+          <option
+            value="ALL"
+          >
+            ALL
+          </option>
+          <option
+            value="FHAZ"
+          >
+            FHAZ
+          </option>
+          <option
+            value="RHAZ"
+          >
+            RHAZ
+          </option>
+          <option
+            value="MAST"
+          >
+            MAST
+          </option>
+          <option
+            value="CHEMCAM"
+          >
+            CHEMCAM
+          </option>
+          <option
+            value="MAHLI"
+          >
+            MAHLI
+          </option>
+          <option
+            value="MARDI"
+          >
+            MARDI
+          </option>
+          <option
+            value="NAVCAM"
+          >
+            NAVCAM
+          </option>
+          <option
+            value="PANCAM"
+          >
+            PANCAM
+          </option>
+          <option
+            value="MINITES"
+          >
+            MINITES
+          </option>
+        </select>
+      </div>
+    </div>
+    <div
+      class="mars-photos"
+    >
+      <div
+        class="photo-grid"
+      >
+        <div
+          class="photo-card"
+        >
+          <img
+            alt="Mars Rover 123"
+            src="test.jpg"
+          />
+          <div
+            class="photo-info"
+          >
+            <p>
+              <strong>
+                Camera:
+              </strong>
+               
+              Front Hazard Avoidance Camera
+            </p>
+            <p>
+              <strong>
+                Date:
+              </strong>
+               
+              2025-02-15
+            </p>
+            <p>
+              <strong>
+                Rover:
+              </strong>
+               
+              Curiosity
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

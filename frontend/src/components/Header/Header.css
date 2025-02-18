@@ -1,5 +1,6 @@
+/* Retaining Existing Header Styles */
 .header {
-  background-color: rgba(10, 10, 42, 0.9); 
+  background-color: rgba(10, 10, 42, 0.9);
   padding: 15px 20px;
   width: 100%;
   position: fixed;
@@ -22,7 +23,7 @@
 .logo .icon {
   width: 40px;
   height: 40px;
-  color: #ffcc00; 
+  color: #ffcc00;
 }
 
 .logo-text {
@@ -31,7 +32,7 @@
   color: white;
 }
 
-.logo-subtext{
+.logo-subtext {
   font-size: 10px;
   font-style: italic;
   color: white;
@@ -41,13 +42,13 @@
   display: flex;
   align-items: center;
   width: 100%;
-  justify-content: flex-end; 
+  justify-content: flex-end;
   padding-right: 20px;
 }
 
 .nav {
   display: flex;
-  margin-left: auto; 
+  margin-left: auto;
 }
 
 .nav-buttons {
@@ -85,14 +86,52 @@
   border-radius: 5px;
 }
 
+/* 🔹 New Styles for Hamburger Menu */
+.menu-toggle {
+  display: none; /* Hidden by default */
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 5px;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* 🔹 Responsive Styles for Small Screens */
 @media (max-width: 768px) {
-  .header-content {
-      flex-direction: column;
-      text-align: center;
+  .menu-toggle {
+    display: block; /* Show hamburger button */
+    margin-right: 45px;
+  }
+
+  .nav {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 42, 0.95);
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+    display: none; /* Initially hidden */
+    flex-direction: column;
+    align-items: center;
+    padding: 15px 0;
+  }
+
+  .nav.open {
+    display: flex; /* Show when toggled */
   }
 
   .nav-buttons {
-      flex-direction: column;
-      gap: 10px;
+    flex-direction: column;
+    gap: 10px;
+    width: 50%;
+    padding: auto;
+    text-align: center;
+  }
+
+  .nav-button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
   }
 }
